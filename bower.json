@@ -1,0 +1,15 @@
+{
+  "name": "purescript-spec-discovery",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^2.0.0",
+    "purescript-eff": "^2.0.0",
+    "purescript-arrays": "^2.0.0",
+    "purescript-spec": "^0.9.1"
+  }
+}
