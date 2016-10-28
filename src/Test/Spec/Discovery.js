@@ -19,6 +19,6 @@ function getMatchingModules(pattern) {
 
 exports.getSpecs = function (pattern) {
   return function () {
-    return getMatchingModules('Test.Spec.Discovery.*');
+    return getMatchingModules(pattern);
   };
 };
