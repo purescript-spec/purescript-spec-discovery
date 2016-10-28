@@ -8,7 +8,7 @@ NodeJS environments, currently.
 ## Usage
 
 ```bash
-bower install purescript-spec-discovery
+bower install --save-dev purescript-spec-discovery
 ```
 
 ```purescript
