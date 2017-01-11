@@ -1,9 +1,9 @@
 # purescript-spec-discovery
 
 purescript-spec-discovery is an extension to
-[purescript-spec](https://github.com/owickstrom/purescript-spec) that finds
-specs automatically, given a regular expression pattern. It only works for
-NodeJS environments, currently.
+[purescript-spec](https://github.com/owickstrom/purescript-spec) (0.11.0 or
+higher) that finds specs automatically, given a regular expression pattern. It
+only works for NodeJS environments, currently.
 
 ## Usage
 
@@ -16,14 +16,12 @@ module Test.Main where
 
 import Prelude
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE)
 import Node.FS (FS)
-import Node.Process (PROCESS)
 import Test.Spec.Discovery (discover)
 import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (run)
+import Test.Spec.Runner (RunnerEffects, run)
 
-main :: Eff (fs :: FS, process :: PROCESS, console :: CONSOLE) Unit
+main :: Eff (RunnerEffects (fs :: FS)) Unit
 main = discover "My\\.Package\\..*Spec" >>= run [consoleReporter]
 ```
 
