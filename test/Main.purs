@@ -8,4 +8,4 @@ import Test.Spec.Reporter.Console (consoleReporter)
 import Test.Spec.Runner (RunnerEffects, run)
 
 main :: Eff (RunnerEffects (fs :: FS)) Unit
-main = discover "Test\\.Spec\\.Discovery\\..*Spec" >>= run [consoleReporter]
+main = discover "Test\\.Spec\\.Discovery.*Spec" >>= run [consoleReporter]
