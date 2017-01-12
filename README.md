@@ -1,9 +1,10 @@
 # purescript-spec-discovery
 
 purescript-spec-discovery is an extension to
-[purescript-spec](https://github.com/owickstrom/purescript-spec) (0.11.0 or
-higher) that finds specs automatically, given a regular expression pattern. It
-only works for NodeJS environments, currently.
+[purescript-spec](https://github.com/owickstrom/purescript-spec) that finds
+specs automatically, given a regular expression pattern.
+
+It only works for NodeJS environments, currently.
 
 ## Usage
 
