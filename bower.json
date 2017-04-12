@@ -12,9 +12,9 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^2.0.0",
-    "purescript-eff": "^2.0.0",
-    "purescript-arrays": "^3.0.0",
-    "purescript-spec": "^0.12.0"
+    "purescript-prelude": "^3.0.0",
+    "purescript-eff": "^3.1.0",
+    "purescript-arrays": "^4.0.1",
+    "purescript-spec": "^0.13.0"
   }
 }
