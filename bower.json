@@ -14,7 +14,7 @@
   "dependencies": {
     "purescript-prelude": "^3.0.0",
     "purescript-eff": "^3.1.0",
-    "purescript-arrays": "^4.0.1",
-    "purescript-spec": "^0.14.0"
+    "purescript-arrays": "^4.0.0",
+    "purescript-spec": "^1.0.0"
   }
 }
