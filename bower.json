@@ -15,6 +15,7 @@
     "purescript-prelude": "^3.0.0",
     "purescript-eff": "^3.1.0",
     "purescript-arrays": "^4.0.0",
-    "purescript-spec": "^2.0.0"
+    "purescript-spec": "^2.0.0",
+    "purescript-node-fs": "^4.0.0"
   }
 }
