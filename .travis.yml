@@ -1,5 +1,5 @@
 language: node_js
-sudo: false
+sudo: true
 node_js:
   - 10
 env:
@@ -11,8 +11,8 @@ install:
   - npm install -g bower pulp@^12.3.0
   - bower install
 script:
-  - travis_wait pulp build
-  - travis_wait pulp test
+  - pulp build
+  - pulp test
 
 cache:
   directories:
