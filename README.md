@@ -16,18 +16,19 @@ bower install --save-dev purescript-spec-discovery
 module Test.Main where
 
 import Prelude
-import Control.Monad.Eff (Eff)
-import Node.FS (FS)
+import Effect (Effect)
 import Test.Spec.Discovery (discover)
 import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (RunnerEffects, run)
+import Test.Spec.Runner (run)
 
-main :: Eff (RunnerEffects (fs :: FS)) Unit
-main = discover "My\\.Package\\..*Spec" >>= run [consoleReporter]
+main :: Effect Unit
+main = do
+  specs <- discover "My\\.Package\\..*Spec" 
+  run [consoleReporter] specs
 ```
 
 All modules that match the regular expression, **and has a definition
-`spec :: Spec r Unit`**, will be included and run.
+`spec :: Spec Unit`**, will be included and run.
 
 ## Documentation
 
