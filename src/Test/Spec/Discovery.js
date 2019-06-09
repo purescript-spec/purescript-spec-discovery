@@ -13,7 +13,7 @@ function getMatchingModules(pattern) {
     return (new RegExp(pattern).test(directory));
   }).map(function (name) {
     var module = require(path.join(__dirname, '..', name));
-    return (module && typeof module.spec === 'function') ? module.spec : null;
+    return (module && typeof module.spec !== 'undefined') ? module.spec : null;
   }).filter(function (x) { return x; });
 }
 
