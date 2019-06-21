@@ -12,6 +12,26 @@ It only works for NodeJS environments, currently.
 bower install --save-dev purescript-spec-discovery
 ```
 
+For `purescript-spec` `>= 4.0.0`:
+
+```purescript
+module Test.Main where
+
+import Prelude
+import Effect (Effect)
+import Effect.Aff (launchAff_)
+import Test.Spec.Discovery (discover)
+import Test.Spec.Reporter.Console (consoleReporter)
+import Test.Spec.Runner (run)
+
+main :: Effect Unit
+main = launchAff_ do
+  specs <- discover "My\\.Package\\..*Spec"
+  run [consoleReporter] specs
+```
+
+For older versions of `purescript-spec`:
+
 ```purescript
 module Test.Main where
 
@@ -23,7 +43,7 @@ import Test.Spec.Runner (run)
 
 main :: Effect Unit
 main = do
-  specs <- discover "My\\.Package\\..*Spec" 
+  specs <- discover "My\\.Package\\..*Spec"
   run [consoleReporter] specs
 ```
 
