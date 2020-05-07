@@ -22,12 +22,12 @@ import Effect (Effect)
 import Effect.Aff (launchAff_)
 import Test.Spec.Discovery (discover)
 import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (run)
+import Test.Spec.Runner (runSpec)
 
 main :: Effect Unit
 main = launchAff_ do
   specs <- discover "My\\.Package\\..*Spec"
-  run [consoleReporter] specs
+  runSpec [consoleReporter] specs
 ```
 
 For older versions of `purescript-spec`:
