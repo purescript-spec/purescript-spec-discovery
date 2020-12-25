@@ -26,7 +26,7 @@ import Test.Spec.Runner (run)
 
 main :: Effect Unit
 main = launchAff_ do
-  specs <- discover "My\\.Package\\..*Spec"
+  specs <- discover """My\.Package\..*Spec"""
   run [consoleReporter] specs
 ```
 
@@ -43,7 +43,7 @@ import Test.Spec.Runner (run)
 
 main :: Effect Unit
 main = do
-  specs <- discover "My\\.Package\\..*Spec"
+  specs <- discover """My\.Package\..*Spec"""
   run [consoleReporter] specs
 ```
 
