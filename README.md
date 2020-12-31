@@ -9,10 +9,8 @@ It only works for NodeJS environments, currently.
 ## Usage
 
 ```bash
-bower install --save-dev purescript-spec-discovery
+spago install spec-discovery
 ```
-
-For `purescript-spec` `>= 4.0.0`:
 
 ```purescript
 module Test.Main where
@@ -28,23 +26,6 @@ main :: Effect Unit
 main = launchAff_ do
   specs <- discover """My\.Package\..*Spec"""
   runSpec [consoleReporter] specs
-```
-
-For older versions of `purescript-spec`:
-
-```purescript
-module Test.Main where
-
-import Prelude
-import Effect (Effect)
-import Test.Spec.Discovery (discover)
-import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (run)
-
-main :: Effect Unit
-main = do
-  specs <- discover """My\.Package\..*Spec"""
-  run [consoleReporter] specs
 ```
 
 All modules that match the regular expression, **and have a definition
