@@ -39,12 +39,12 @@ import Prelude
 import Effect (Effect)
 import Test.Spec.Discovery (discover)
 import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (runSpec)
+import Test.Spec.Runner (run)
 
 main :: Effect Unit
 main = do
   specs <- discover """My\.Package\..*Spec"""
-  runSpec [consoleReporter] specs
+  run [consoleReporter] specs
 ```
 
 All modules that match the regular expression, **and have a definition
