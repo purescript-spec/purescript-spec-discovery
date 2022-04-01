@@ -11,4 +11,4 @@ Features:
 - Update to v0.15.0 and support es modules
 
 Breaking changes:
-- `discover` now returns `Aff (Spec Unit)` instead of `m (Spec Unit)` due to dynamic imports returning promises
+- `discover` now needs `MonadAff` constraint instead of `MonadEffect` due to dynamic imports returning promises
