@@ -1,24 +1,30 @@
-'use strict';
+import path from "path"
+import fs from 'fs';
+import { fileURLToPath } from "url"
 
-if (typeof require !== 'function') {
-  throw new Error('Sorry, purescript-spec-discovery only supports NodeJS environments!');
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+    throw new Error('Sorry, purescript-spec-discovery only supports NodeJS environments!');
 }
-
-var fs = require('fs');
-var path = require('path');
 
 function getMatchingModules(pattern) {
   var directories = fs.readdirSync(path.join(__dirname, '..'));
-  return directories.filter(function (directory) {
+  const modulePromises = directories.filter(function (directory) {
     return (new RegExp(pattern).test(directory));
   }).map(function (name) {
-    var module = require(path.join(__dirname, '..', name));
-    return (module && typeof module.spec !== 'undefined') ? module.spec : null;
-  }).filter(function (x) { return x; });
+    var modulePromise = import(path.join(__dirname, '..', name, 'index.js'));
+    return modulePromise.then( module => {
+      return (module && typeof module.spec !== 'undefined') ? module.spec : null;
+    })
+  })
+  const modules = Promise.all(modulePromises)
+  return modules.then(ms => ms.filter(function (x) { return x; }));
 }
 
-exports.getSpecs = function (pattern) {
+export function getSpecs(pattern) {
   return function () {
     return getMatchingModules(pattern);
   };
-};
+}
