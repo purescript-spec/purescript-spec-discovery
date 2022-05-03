@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: purescript-contrib/setup-purescript@main
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Build and test with Spago
+        run: spago test
+
+      - name: Build and test with Pulp
+        run: |
+          npx bower install
+          npx pulp build
+          npx pulp test

@@ -1,24 +1,5 @@
 let upstream =
-      https://raw.githubusercontent.com/purescript/package-sets/prepare-0.15/src/packages.dhall
-        sha256:5f32c078b014909642302b328bd9bebcdcedc301956a709b302f19521680a0aa
+      https://github.com/purescript/package-sets/releases/download/psc-0.15.0-20220503/packages.dhall
+        sha256:847d49acea4803c3d42ef46114053561e91840e35ede29f0a8014d09d47cd8df
 
 in  upstream
-  with metadata.version = "v0.15.0-alpha-02"
-  with spec =
-    { repo = "https://github.com/purescript-spec/purescript-spec.git"
-    , version = "master"
-    , dependencies =
-      [ "aff"
-      , "ansi"
-      , "avar"
-      , "console"
-      , "exceptions"
-      , "foldable-traversable"
-      , "fork"
-      , "now"
-      , "pipes"
-      , "prelude"
-      , "strings"
-      , "transformers"
-      ]
-    }

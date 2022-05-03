@@ -3,7 +3,7 @@
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/owickstrom/purescript-spec-discovery.git"
+    "url": "https://github.com/purescript-spec/purescript-spec-discovery.git"
   },
   "ignore": [
     "**/.*",
@@ -12,10 +12,13 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^5.0.0",
-    "purescript-effect": "^3.0.0",
-    "purescript-arrays": "^6.0.0",
-    "purescript-spec": "^5.0.0",
-    "purescript-node-fs": "^6.0.0"
+    "purescript-prelude": "^6.0.0",
+    "purescript-effect": "^4.0.0",
+    "purescript-arrays": "^7.0.0",
+    "purescript-spec": "^7.0.0",
+    "purescript-node-fs": "^8.0.0"
+  },
+  "devDependencies": {
+    "purescript-aff-promise": "^4.0.0"
   }
 }
