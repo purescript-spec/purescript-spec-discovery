@@ -1,24 +1,27 @@
 {
-  "name": "purescript-spec-discovery",
-  "license": "MPL-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/purescript-spec/purescript-spec-discovery.git"
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "output"
-  ],
-  "dependencies": {
-    "purescript-prelude": "^6.0.0",
-    "purescript-effect": "^4.0.0",
-    "purescript-arrays": "^7.0.0",
-    "purescript-spec": "^7.0.0",
-    "purescript-node-fs": "^8.0.0"
-  },
-  "devDependencies": {
-    "purescript-aff-promise": "^4.0.0"
-  }
+    "name": "purescript-spec-discovery",
+    "license": [
+        "MPL-2.0"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/purescript-spec/purescript-spec-discovery.git"
+    },
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "output"
+    ],
+    "dependencies": {
+        "purescript-aff": "^v7.0.0",
+        "purescript-aff-promise": "^v4.0.0",
+        "purescript-arrays": "^v7.0.0",
+        "purescript-console": "^v6.0.0",
+        "purescript-effect": "^v4.0.0",
+        "purescript-foldable-traversable": "^v6.0.0",
+        "purescript-node-fs": "^v8.0.0",
+        "purescript-prelude": "^v6.0.0",
+        "purescript-spec": "^v7.0.0"
+    }
 }
