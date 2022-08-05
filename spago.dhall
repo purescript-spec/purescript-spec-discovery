@@ -11,6 +11,7 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "spec-discovery"
+, repository = "https://github.com/purescript-spec/purescript-spec-discovery.git"
 , license = "MPL-2.0"
 , dependencies =
   [ "aff"
