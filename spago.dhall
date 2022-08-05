@@ -11,6 +11,7 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "spec-discovery"
+, license = "MPL-2.0"
 , dependencies =
   [ "aff"
   , "aff-promise"
