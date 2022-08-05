@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v8.0.1
+
+- @CarstenKoenig Fix discovery on Windows by prepending `file://`
+
+## v8.0.0
 Features:
 - Update to v0.15.0 and support es modules
 
