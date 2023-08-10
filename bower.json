@@ -16,11 +16,8 @@
     "dependencies": {
         "purescript-aff": "^v7.0.0",
         "purescript-aff-promise": "^v4.0.0",
-        "purescript-arrays": "^v7.0.0",
-        "purescript-console": "^v6.0.0",
         "purescript-effect": "^v4.0.0",
         "purescript-foldable-traversable": "^v6.0.0",
-        "purescript-node-fs": "^v8.0.0",
         "purescript-prelude": "^v6.0.0",
         "purescript-spec": "^v7.0.0"
     }
