@@ -1,0 +1,23 @@
+package:
+  dependencies:
+    [ "aff"
+    , "aff-promise"
+    , "effect"
+    , "foldable-traversable"
+    , "prelude"
+    , "spec"
+    ]
+  name: spec-discovery
+  publish:
+    version: 8.2.1
+    license: "Mozilla Public License Version 2.0"
+    location:
+      githubOwner: "f-o-a-m"
+      githubRepo: purescript-optparse
+  test:
+    dependencies: []
+    main: Test.Main
+workspace:
+  extra_packages: {}
+  package_set:
+    registry: 43.3.0
