@@ -21,8 +21,3 @@ jobs:
         run: |
           npm install
           npx spago test
-
-      - name: Build and test with Pulp
-        run: |
-          npx pulp build
-          npx pulp test
