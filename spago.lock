@@ -3,12 +3,12 @@ workspace:
     spec-discovery:
       path: ./
       dependencies:
-        - aff
-        - aff-promise
-        - effect
-        - foldable-traversable
-        - prelude
-        - spec
+        - aff: ">=7.1.0 <8.0.0"
+        - aff-promise: ">=4.0.0 <5.0.0"
+        - effect: ">=4.0.0 <5.0.0"
+        - foldable-traversable: ">=6.0.0 <7.0.0"
+        - prelude: ">=6.0.1 <7.0.0"
+        - spec: ">=7.6.0 <8.0.0"
       test_dependencies: []
       build_plan:
         - aff

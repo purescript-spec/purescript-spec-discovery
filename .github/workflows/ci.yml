@@ -18,7 +18,9 @@ jobs:
           node-version: "14"
 
       - name: Build and test with Spago
-        run: spago test
+        run: |
+          npm install
+          npx spago test
 
       - name: Build and test with Pulp
         run: |
