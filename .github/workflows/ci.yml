@@ -24,6 +24,5 @@ jobs:
 
       - name: Build and test with Pulp
         run: |
-          npx bower install
           npx pulp build
           npx pulp test
