@@ -1,0 +1,17 @@
+workspace:
+  packageSet:
+    registry: 50.7.0
+  extraPackages: {}
+
+package:
+  name: spec-discovery
+  dependencies:
+    - aff: ">=7.1.0 <8.0.0"
+    - aff-promise: ">=4.0.0 <5.0.0"
+    - effect: ">=4.0.0 <5.0.0"
+    - foldable-traversable: ">=6.0.0 <7.0.0"
+    - prelude: ">=6.0.1 <7.0.0"
+    - spec: ">=7.6.0 <8.0.0"
+  test:
+    main: Test.Main
+    dependencies: []
