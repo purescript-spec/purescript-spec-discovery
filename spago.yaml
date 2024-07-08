@@ -1,10 +1,17 @@
 workspace:
   packageSet:
-    registry: 50.7.0
-  extraPackages: {}
+    registry: 53.2.0
+  extraPackages:
+    parallel: 6.0.0 # Workaround for https://github.com/purescript/spago/issues/1110
 
 package:
   name: spec-discovery
+  publish:
+    license: MPL-2.0
+    version: 8.3.0
+    location:
+      githubOwner: purescript-spec
+      githubRepo: purescript-spec-discovery
   dependencies:
     - aff: ">=7.1.0 <8.0.0"
     - aff-promise: ">=4.0.0 <5.0.0"
