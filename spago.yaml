@@ -1,8 +1,6 @@
 workspace:
   packageSet:
-    registry: 53.2.0
-  extraPackages:
-    parallel: 6.0.0 # Workaround for https://github.com/purescript/spago/issues/1110
+    registry: 60.2.1
 
 package:
   name: spec-discovery
@@ -21,4 +19,5 @@ package:
     - spec: ">=7.6.0 <8.0.0"
   test:
     main: Test.Main
-    dependencies: []
+    dependencies:
+      - spec-node
