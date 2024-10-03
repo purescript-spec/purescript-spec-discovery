@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+@srghma Use `spec-node` in tests
+
 ## v8.0.1
 
 - @CarstenKoenig Fix discovery on Windows by prepending `file://`
