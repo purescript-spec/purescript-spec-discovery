@@ -12,31 +12,25 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   )
 }
 
-function getMatchingModules (pattern) {
-  var directories = fs.readdirSync(path.join(__dirname, '..'))
-  const modulePromises = directories
-    .filter(function (directory) {
-      return new RegExp(pattern).test(directory)
-    })
-    .map(function (name) {
-      const fullPath = __onWindows
-        ? path.join('file://', __dirname, '..', name, 'index.js')
-        : path.join(__dirname, '..', name, 'index.js')
-      var modulePromise = import(fullPath)
-      return modulePromise.then(module => {
-        return module && typeof module.spec !== 'undefined' ? module.spec : null
+export function getSpecs(pattern) {
+  return (onError, onSuccess) => {
+    const regex = new RegExp(pattern)
+    const modulePromises = fs
+      .readdirSync(path.join(__dirname, '..'))
+      .filter(directory => regex.test(directory))
+      .map(name => {
+        const fullPath = __onWindows
+          ? path.join('file://', __dirname, '..', name, 'index.js')
+          : path.join(__dirname, '..', name, 'index.js')
+        return import(fullPath).then(module =>
+          module && typeof module.spec !== 'undefined' ? module.spec : null
+        )
       })
-    })
-  const modules = Promise.all(modulePromises)
-  return modules.then(ms =>
-    ms.filter(function (x) {
-      return x
-    })
-  )
-}
 
-export function getSpecs (pattern) {
-  return function () {
-    return getMatchingModules(pattern)
+    Promise.all(modulePromises)
+      .then(specs => onSuccess(specs.filter(x => x)))
+      .catch(onError)
+
+    return () => {}
   }
 }
