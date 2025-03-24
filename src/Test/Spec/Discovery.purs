@@ -1,30 +1,43 @@
 module Test.Spec.Discovery
   ( discover
   , discoverAndRunSpecs
-  )
-  where
+  ) where
 
 import Prelude
 
+import Data.Identity (Identity(..))
 import Data.Traversable (sequence_)
 import Effect (Effect)
-import Effect.Aff (launchAff_)
+import Effect.Aff (Aff, launchAff_)
 import Effect.Aff.Class (class MonadAff, liftAff)
-import Effect.Aff.Compat (EffectFn1, EffectFnAff, fromEffectFnAff, runEffectFn1)
+import Effect.Aff.Compat (EffectFnAff, fromEffectFnAff)
 import Effect.Class (liftEffect)
-import Test.Spec (Spec)
+import Effect.Uncurried (EffectFn2, runEffectFn2)
+import Test.Spec (Spec, SpecT, mapSpec)
 import Test.Spec.Runner (Reporter)
-import Test.Spec.Runner.Node (runSpecAndExitProcess)
+import Test.Spec.Runner.Node (runSpecAndExitProcess')
+import Test.Spec.Runner.Node.Config (defaultConfig)
 
-foreign import getSpecs :: EffectFn1 String (EffectFnAff (Array (Spec Unit)))
+idToAff :: forall a. Identity a -> Aff a
+idToAff (Identity a) = pure a
 
-discover :: ∀ m. MonadAff m => String -> m (Spec Unit)
+foreign import getSpecs
+  :: EffectFn2 String
+       ((Spec Unit) -> SpecT Aff Unit Aff Unit)
+       (EffectFnAff (Array (SpecT Aff Unit Aff Unit)))
+
+discover :: ∀ m. MonadAff m => String -> m (SpecT Aff Unit Aff Unit)
 discover pattern = do
-  runDiscover <- liftEffect $ runEffectFn1 getSpecs pattern
+  runDiscover <- liftEffect $ runEffectFn2 getSpecs pattern (mapSpec idToAff)
   specs <- liftAff $ fromEffectFnAff runDiscover
   pure $ sequence_ specs
 
 discoverAndRunSpecs :: Array Reporter -> String -> Effect Unit
 discoverAndRunSpecs reporters pattern = launchAff_ do
   specs <- discover pattern
-  liftEffect $ runSpecAndExitProcess reporters specs
+  liftEffect $ runSpecAndExitProcess' @Aff
+    { defaultConfig: defaultConfig
+    , parseCLIOptions: true
+    }
+    reporters
+    specs
