@@ -23,7 +23,7 @@ export function getSpecs(pattern) {
           ? path.join('file://', __dirname, '..', name, 'index.js')
           : path.join(__dirname, '..', name, 'index.js')
         return import(fullPath).then(module =>
-          module && typeof module.spec !== 'undefined' ? module.spec : null
+          module && typeof module.spec !== 'undefined' ? { name, spec: module.spec } : null
         )
       })
 
