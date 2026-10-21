@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,9 +19,8 @@ export function getSpecs(pattern) {
       .readdirSync(path.join(__dirname, '..'))
       .filter(directory => regex.test(directory))
       .map(name => {
-        const fullPath = __onWindows
-          ? path.join('file://', __dirname, '..', name, 'index.js')
-          : path.join(__dirname, '..', name, 'index.js')
+        const filePath = path.join(__dirname, '..', name, 'index.js')
+        const fullPath = pathToFileURL(filePath, { "windows": __onWindows }).href
         return import(fullPath).then(module =>
           module && typeof module.spec !== 'undefined' ? { name, spec: module.spec } : null
         )
